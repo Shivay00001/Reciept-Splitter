@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Bill Splitter // NEON</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --grid-color: rgba(0, 255, 255, 0.1);
+        --grid-size: 50px;
+      }
+      body {
+        background-color: #000;
+        background-image:
+          linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+          linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+        background-size: var(--grid-size) var(--grid-size);
+        animation: pan-background 60s linear infinite;
+      }
+      @keyframes pan-background {
+        0% { background-position: 0 0; }
+        100% { background-position: var(--grid-size) var(--grid-size); }
+      }
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: rgba(0, 255, 255, 0.3); border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(0, 255, 255, 0.5); }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              'orbitron': ['Orbitron', 'sans-serif'],
+              'sans': ['Inter', 'sans-serif'],
+            },
+            boxShadow: {
+              'neon-cyan': '0 0 5px rgba(0, 255, 255, 0.8), 0 0 10px rgba(0, 255, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.4), 0 0 40px rgba(0, 255, 255, 0.2)',
+              'neon-indigo': '0 0 5px #6366f1, 0 0 10px #6366f1, 0 0 15px #6366f1',
+              'neon-green': '0 0 5px #22c55e, 0 0 10px #22c55e, 0 0 15px #22c55e',
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+              'pulse-glow': 'pulseGlow 2s infinite ease-in-out',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px) scale(0.95)' },
+                '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+              },
+              pulseGlow: {
+                '0%, 100%': { borderColor: 'rgba(0, 255, 255, 0.4)', boxShadow: '0 0 5px rgba(0, 255, 255, 0.2)' },
+                '50%': { borderColor: 'rgba(0, 255, 255, 0.8)', boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)' },
+              },
+            }
+          },
+        },
+        plugins: [
+          function({ addUtilities }) {
+              const newUtilities = {
+                  '.text-shadow-neon-cyan': {
+                      textShadow: '0 0 2px #bae6fd, 0 0 5px #38bdf8, 0 0 10px #0ea5e9',
+                  },
+                  '.text-shadow-neon-indigo': {
+                      textShadow: '0 0 2px #c7d2fe, 0 0 5px #a5b4fc, 0 0 10px #818cf8',
+                  },
+                  '.text-shadow-neon-green': {
+                      textShadow: '0 0 2px #bbf7d0, 0 0 5px #4ade80, 0 0 10px #22c55e',
+                  },
+                  '.text-shadow-neon-white': {
+                      textShadow: '0 0 5px rgba(255,255,255,0.8), 0 0 10px rgba(255,255,255,0.6)',
+                  },
+              }
+              addUtilities(newUtilities, ['responsive', 'hover'])
+          }
+        ],
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-black font-sans text-gray-200">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
