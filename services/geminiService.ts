@@ -1,12 +1,9 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
+import { getApiKey } from './geminiConfig';
 import { ParsedReceipt, ReceiptItem, Assignments } from '../types';
 
-if (!process.env.API_KEY) {
-  throw new Error("API_KEY environment variable is not set");
-}
-
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: getApiKey() });
 
 const receiptSchema = {
   type: Type.OBJECT,
