@@ -1,5 +1,7 @@
 # Reciept-Splitter — AI receipt parsing & bill splitting demo
 
+Built by [VisionQuantech](https://visionquantech.com) — AI agents, apps & tools for small businesses.
+
 A Google AI Studio-style demo: snap a photo of a restaurant receipt, Gemini
 (`gemini-2.5-flash`) extracts line items, tax and total, and a chat pane lets
 you assign items to people in natural language. It shows a live per-person
